@@ -2,62 +2,30 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import {Gmaps, Marker, InfoWindow, Circle} from 'react-gmaps';
 
-const GOOGLE_API_KEY = ''
+import injectTapEventPlugin from 'react-tap-event-plugin';
+import { MuiThemeProvider, RaisedButton } from 'material-ui';
 
-const coords = {
-  lat: 51.5258541,
-  lng: -0.08040660000006028
-};
+// Needed for onTouchTap
+// http://stackoverflow.com/a/34015469/988941
+injectTapEventPlugin();
 
-const App = React.createClass({
+class App extends React.Component {
+    constructor(props) {
+        super(props);
+        this.displayName = 'App';
+    }
+    render() {
+        return (
+          <div className='container'>
+            <MuiThemeProvider>
+              <RaisedButton label="Whatever" primary={true} />
+            </MuiThemeProvider>
+          </div>
+        )
+    }
+}
 
-  onMapCreated(map) {
-    map.setOptions({
-      disableDefaultUI: true
-    });
-  },
+export default App;
 
-  onDragEnd(e) {
-    console.log('onDragEnd', e);
-  },
-
-  onCloseClick() {
-    console.log('onCloseClick');
-  },
-
-  onClick(e) {
-    console.log('onClick', e);
-  },
-
-  render() {
-    return (
-      <Gmaps
-        width={'500px'}
-        height={'250px'}
-        lat={coords.lat}
-        lng={coords.lng}
-        zoom={12}
-        loadingMessage={'Be happy'}
-        params={{v: '3.exp', key: GOOGLE_API_KEY }}
-        onMapCreated={this.onMapCreated}>
-        <Marker
-          lat={coords.lat}
-          lng={coords.lng}
-          draggable={true}
-          onDragEnd={this.onDragEnd} />
-        {/* <InfoWindow
-          lat={coords.lat}
-          lng={coords.lng}
-          content={'Hello, React :)'}
-          onCloseClick={this.onCloseClick} />
-        <Circle
-          lat={coords.lat}
-          lng={coords.lng}
-          radius={500}
-          onClick={this.onClick} /> */}
-      </Gmaps>
-    );
-  }
-});
 
 ReactDOM.render(<App />, document.getElementById('root'))
