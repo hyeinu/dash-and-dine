@@ -20,6 +20,7 @@ require('mongoose').connect(MONGO_URI, err => {
 // APP DECLARATION
 const app = express();
 
+
 // WEBPACK CONFIG
 const compiler = webpack(webpackConfig);
 
