@@ -11,14 +11,14 @@ const yelp = new Yelp({
 });
 
 // yelp.search({ term: 'food', cll: 'latitude,longitude' })
-exports.weather = (latitude, longitude) => {
-yelp.search({ term: 'restaurants', location: 'Pleasanton' })
-.then(function (data) {
-  console.log(data);
-})
-.catch(function (err) {
-  console.error(err);
-});
+exports.yelpSearch = function(lat, long, cb){
+    yelp.search({ term: 'restaurants', ll: `${lat},${long}` })
+      .then(data => {
+        cb(null, data);
+      })
+      .catch(err => {
+        cb(err);
+      });
+  }
 
-
-module.exports = Yelp;
+// module.exports = yelp;
