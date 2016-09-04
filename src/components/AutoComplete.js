@@ -34,8 +34,6 @@ class AutoComplete extends React.Component {
 	}
 
 	componentDidMount() {
-  	// Create the autocomplete object, restricting the search to geographical
-    // location types.
     new google.maps.places.Autocomplete(
      	(document.getElementById('autocomplete')),
         {types: ['geocode']});
@@ -47,7 +45,8 @@ class AutoComplete extends React.Component {
  	render() {
    	return (
      	<form onSubmit={this.handleFormSubmit}>
-      	<input onChange={this.onChange} value={this.state.address} id="autocomplete" type="text" size="50"/>
+      	<input onChange={this.onChange} value={this.state.address} 
+      	id="autocomplete" type="text" size="50"/>
       	<button type="submit" >Enter</button>
       </form>
     )
@@ -57,40 +56,3 @@ class AutoComplete extends React.Component {
 export default AutoComplete
 
 
-
-// import React from 'react';
-// import PlacesAutocomplete, { geocodeByAddress } from 'react-places-autocomplete';
-// class AutoComplete extends React.Component {
-//     constructor(props) {
-//         super(props);
-//         this.displayName = 'AutoComplete';
-
-//         this.state = {
-//         	address: ''
-//         }
-//         this.onChange = this.onChange.bind(this);
-//         this.submit = this.submit.bind(this);
-//     }
-
-//     onChange(e) {
-//     	this.setState({address:  e.target.value});
-//     }
-
-//     submit(e) {
-//     	e.preventDefault();
-
-//     }
-//     render() {
-//         return (
-//         	<form onSubmit={this.submit}>
-//         		<PlacesAutocomplete
-//           		value={this.state.address}
-//           		onChange={this.onChange}
-//         		/>
-//         		<button type="submit">Submit</button>
-//       		</form>
-//         );
-//     }
-// }
-
-// export default AutoComplete;
