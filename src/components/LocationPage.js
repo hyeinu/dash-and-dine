@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
-import {receiveLocation} from '../actions/LocationActions'
+import { receiveLocation } from '../actions/LocationActions'
+import LocationList from './LocationList'
 
 
-
-export default class  LocationPage extends Component {
+class  LocationPage extends Component {
 
 constructor(){
   super();
+
   this.readMe = this.readMe.bind(this);
 
 }
@@ -16,30 +17,43 @@ constructor(){
 
  }
 
-/*  componentWillMount(){
+  componentWillMount(){
     this.props.receiveLocation();
-  }*/
+  }
 
   render() {
-    console.log('location', this.state.location)
+   var x =  this.props.location;
+   var address = x.location.address;
+   var city = x.location.city;
+   var id ="id1"
+
+   var addressObj = {"address":address,
+                      "city":city,
+                       "id":id
+                   
+                }
+  console.log("AddressObject",addressObj)
     return (
       <div>
       <h1 className="text-center">Places to Dine</h1>
       <button  onClick={this.readMe}>Dine Me</button>
+      <LocationList address={addressObj}/>
       </div>
 
     )
   }
 }
 
-connect(state =>({
+export default connect(state =>({
   location: state.location
 }),
-dispatch =>({
-  return receiveLocation() {
-    dispatch(receiveLocation())
+dispatch => {
+  return {
+    receiveLocation() {
+      dispatch(receiveLocation())
+    }
   }
- })
+ }
 )(LocationPage)
 
 

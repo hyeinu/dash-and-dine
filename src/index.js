@@ -8,6 +8,8 @@ import { MuiThemeProvider } from 'material-ui';
 
 import Layout from './components/Layout';
 import Splash from './components/Splash';
+import LocationPage from './components/LocationPage';
+import LocationList from './components/LocationList'
 
 import store from './store'
 
@@ -22,6 +24,8 @@ render(
       <Router history={browserHistory}>
         <Route path="/" component={Layout}>
           <IndexRoute component={Splash} />
+          <Route path="/location" component={LocationPage}/>
+          <Route path="/locationlist" component={LocationList}/>
           {/* <Route path='/pokemon' component={Pokemon}></Route> */}
         </Route>
       </Router>
