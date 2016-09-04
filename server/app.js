@@ -1,4 +1,8 @@
+'use strict';
+
+require('dotenv').config();
 // CONSTANTS
+
 const PORT = process.env.PORT || 8000;
 const MONGO_URI = process.env.MONGODB_URI || 'mongodb://localhost/dine-and-dash';
 

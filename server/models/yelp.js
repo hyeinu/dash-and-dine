@@ -3,11 +3,13 @@
 const Yelp = require('yelp');
 const axios = require('axios');
 
+require('dotenv').config();
+
 const yelp = new Yelp({
-  consumer_key: 'VCHDpMVm7IedG_E_Wd6npQ',
-  consumer_secret: 'VluMwUUfl-SnlrEeTmUwAXoSgNA',
-  token: 'JGAQ_5RsWqx0F4NkrfB0LoNIbGUCLbjK',
-  token_secret: '9eAAmqKOymq4st4pzslqGCuX5fI',
+    consumer_key: process.env.consumer_key,
+    consumer_secret: process.env.consumer_secret,
+    token: process.env.token,
+    token_secret: process.env.token_secret
 });
 
 // yelp.search({ term: 'food', cll: 'latitude,longitude' })

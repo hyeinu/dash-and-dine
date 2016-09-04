@@ -1,6 +1,15 @@
 @import 'partial';
 
 .jumbotron{
-    margin-top: 10px;
-    height: 95vh;
+  // align-items: center;
+  margin-top: 10px;
+  width: auto;
+  height: auto;
+  background: rgba(255,255,255,0.4);
+}
+
+body{
+  background-image: url('https://hd.unsplash.com/photo-1417353783325-14cb8f9ba1dd');
+  background-size: cover;
+  text-align: center;
 }
