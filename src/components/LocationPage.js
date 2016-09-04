@@ -30,14 +30,14 @@ constructor(){
    var addressObj = {"address":address,
                       "city":city,
                        "id":id
-                   
+
                 }
   console.log("AddressObject",addressObj)
     return (
       <div>
-      <h1 className="text-center">Places to Dine</h1>
-      <button  onClick={this.readMe}>Dine Me</button>
-      <LocationList address={addressObj}/>
+        <h1 className="text-center">Places to Dine</h1>
+        <button  onClick={this.readMe}>Dine Me</button>
+        <LocationList address={addressObj}/>
       </div>
 
     )
@@ -55,5 +55,3 @@ dispatch => {
   }
  }
 )(LocationPage)
-
-

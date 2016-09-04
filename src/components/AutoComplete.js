@@ -11,7 +11,7 @@ var componentForm = {
 	country: 'long_name',
 	postal_code: 'short_name'
 };
-
+let _autocomplete = null
 class AutoComplete extends React.Component {
 	constructor(props) {
 		super(props)
@@ -29,11 +29,13 @@ class AutoComplete extends React.Component {
 				console.log('Oh no!', err)
 			}
 			console.log(`Yay! got latitude and longitude for ${address}`, { lat, lng })
+			console.log(_autocomplete.getPlace().formatted_address)
+			//this.props.getLocation(lat, lng)
 		})
 	}
 
 	componentDidMount() {
-    new google.maps.places.Autocomplete(
+    _autocomplete = new google.maps.places.Autocomplete(
      	(document.getElementById('autocomplete')),
         {types: ['geocode']});
   }
