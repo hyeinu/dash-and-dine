@@ -1,5 +1,6 @@
 import React from 'react'
 import { geocodeByAddress } from 'react-places-autocomplete'
+import { TextField, FlatButton } from 'material-ui'
 
 var placeSearch, autocomplete;
 var componentForm = {
@@ -10,7 +11,6 @@ var componentForm = {
 	country: 'long_name',
 	postal_code: 'short_name'
 };
-
 
 class AutoComplete extends React.Component {
 	constructor(props) {
@@ -28,69 +28,37 @@ class AutoComplete extends React.Component {
 			if (err) {
 				console.log('Oh no!', err)
 			}
-
 			console.log(`Yay! got latitude and longitude for ${address}`, { lat, lng })
 		})
 	}
 
 	componentDidMount() {
-  	// Create the autocomplete object, restricting the search to geographical
-    // location types.
     new google.maps.places.Autocomplete(
      	(document.getElementById('autocomplete')),
         {types: ['geocode']});
   }
 
   onChange(e) {
-  	this.setState({address: e.target.value})
+  	this.setState({ address: e.target.value })
   }
  	render() {
    	return (
-     	<form onSubmit={this.handleFormSubmit}>
-      	<input onChange={this.onChange} value={this.state.address} id="autocomplete" type="text" size="50"/>
-      	<button type="submit" >Enter</button>
-      </form>
+			<div className="text-center">
+				<form onSubmit={this.handleFormSubmit}>
+					<TextField
+						onChange={this.onChange}
+						floatingLabelText="Enter a location"
+						floatingLabelFixed={false}
+						placeholder=''
+						value={this.state.address}
+						id="autocomplete"
+						type="text"
+						size="50" />
+					<FlatButton type="submit" label="Enter" primary={true} />
+				</form>
+   		</div>
     )
   }
 }
 
 export default AutoComplete
-
-
-
-// import React from 'react';
-// import PlacesAutocomplete, { geocodeByAddress } from 'react-places-autocomplete';
-// class AutoComplete extends React.Component {
-//     constructor(props) {
-//         super(props);
-//         this.displayName = 'AutoComplete';
-
-//         this.state = {
-//         	address: ''
-//         }
-//         this.onChange = this.onChange.bind(this);
-//         this.submit = this.submit.bind(this);
-//     }
-
-//     onChange(e) {
-//     	this.setState({address:  e.target.value});
-//     }
-
-//     submit(e) {
-//     	e.preventDefault();
-
-//     }
-//     render() {
-//         return (
-//         	<form onSubmit={this.submit}>
-//         		<PlacesAutocomplete
-//           		value={this.state.address}
-//           		onChange={this.onChange}
-//         		/>
-//         		<button type="submit">Submit</button>
-//       		</form>
-//         );
-//     }
-// }
-
-// export default AutoComplete;
