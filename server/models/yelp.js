@@ -10,9 +10,7 @@ const yelp = new Yelp({
     consumer_secret: process.env.consumer_secret,
     token: process.env.token,
     token_secret: process.env.token_secret
-});
 
-// yelp.search({ term: 'food', cll: 'latitude,longitude' })
 exports.yelpSearch = function(lat, long, cb){
     yelp.search({ term: 'restaurants', ll: `${lat},${long}` })
       .then(data => {
@@ -22,5 +20,3 @@ exports.yelpSearch = function(lat, long, cb){
         cb(err);
       });
   }
-
-// module.exports = yelp;
