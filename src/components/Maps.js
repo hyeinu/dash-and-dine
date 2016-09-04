@@ -5,12 +5,13 @@ class Maps extends React.Component {
     constructor(props) {
         super(props);
         this.displayName = 'Maps';
-       
+
     }
     componentDidMount() {
+
     	let geocoder = new google.maps.Geocoder();
     	 let map = new google.maps.Map(document.getElementById('map'), {
-          center: {lat: -34.397, lng: 150.644},
+          center: {lat: 33.84138900000001, lng: 117.57744500000001},
           zoom: 18,
           mapMaker: true,
           styles: [
@@ -184,9 +185,8 @@ class Maps extends React.Component {
     }
 ]
         });
-    	  
 
-    	  var address = '620 Huntley Court, Riverbank, CA, United States';
+    	  var address = '620 Huntley Dr, Corona, CA, United States';
     		geocoder.geocode( { 'address': address}, function(results, status) {
       	if (status == google.maps.GeocoderStatus.OK) {
         	map.setCenter(results[0].geometry.location);
@@ -201,7 +201,10 @@ class Maps extends React.Component {
   	}
 
     render() {
-        return <div style={{ height: '100%'}} id="map"></div>
+        return (
+        <div style={{ height: '75%'}} id='map'>
+        </div>
+      )
     }
 }
 

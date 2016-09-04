@@ -1,51 +1,53 @@
-import React, { Component } from 'react';
 import { connect } from 'react-redux'
+import DisplayMaps from './DisplayMaps';
+import React, { Component } from 'react';
 import { receiveLocation } from '../actions/LocationActions'
-import LocationList from './LocationList'
+import { CardMedia, Card, CardText, Toggle, CardTitle, CardActions, FlatButton } from 'material-ui';
 
 
 class  LocationPage extends Component {
-
-constructor(){
-  super();
-
-  this.readMe = this.readMe.bind(this);
-
-}
- readMe(e){
-  console.log("Read Me please");
-
- }
 
   componentWillMount(){
     this.props.receiveLocation();
   }
 
   render() {
-   var x =  this.props.location;
-   var address = x.location.address;
-   var city = x.location.city;
-   var id ="id1"
+    console.log('this.props.res:', this.props.res)
+    if(!this.props.res){
+      return (<h1>Loading...</h1>)
+    }
+    let { name, display_phone, url, location } = this.props.res
+    let { address, city, state_code, postal_code } = location
+    let full_address = address + " " + city + ", " + state_code + " " + postal_code + "  ||   " + display_phone
 
-   var addressObj = {"address":address,
-                      "city":city,
-                       "id":id
-
-                }
-  console.log("AddressObject",addressObj)
     return (
-      <div>
-        <h1 className="text-center">Places to Dine</h1>
-        <button  onClick={this.readMe}>Dine Me</button>
-        <LocationList address={addressObj}/>
+      <div className="jumbotron hideJumb">
+      <Card>
+        <CardTitle title={name} subtitle={ full_address } />
+        <CardText>
+          <div className="col-xs-6">
+            <h1>Weather</h1>
+          </div>
+          <div className="col-xs-6">
+            <h1>Restaurant</h1>
+          </div>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+          Donec mattis pretium massa. Aliquam erat volutpat. Nulla facilisi.
+          Donec vulputate interdum sollicitudin. Nunc lacinia auctor quam sed pellentesque.
+          Aliquam dui mauris, mattis quis lacus id, pellentesque lobortis odio.
+        </CardText>
+      <CardActions>
+        <FlatButton label="Another!!" />
+      </CardActions>
+      </Card>
+        <DisplayMaps />
       </div>
-
     )
   }
 }
 
 export default connect(state =>({
-  location: state.location
+  res: state.restaurant.choice
 }),
 dispatch => {
   return {
