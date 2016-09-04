@@ -22,7 +22,7 @@ render(
         <Route path="/" component={Layout}>
           <IndexRoute component={Splash} />
           <Route path="/location" component={LocationPage}/>
-          <Route path="/locationlist" component={LocationList}/>
+          {/* <Route path="/locationlist" component={LocationList}/> */}
           {/* <Route path='/pokemon' component={Pokemon}></Route> */}
         </Route>
       </Router>

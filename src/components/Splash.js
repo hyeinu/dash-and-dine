@@ -1,20 +1,21 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import AutoComplete from './AutoComplete';
-import { getLocation } from '../actions/LocationActions'
+import { getLocation, getMaps} from '../actions/LocationActions'
 
+import Maps from './Maps';
 class Splash extends Component {
   render() {
-    console.log('this.props.result:', this.props.result.restaurant)
-    let { getLocation } = this.props
+    let { getLocation, getMaps } = this.props
     return (
-      <div className="container">
-        <div className="jumbotron">
-          <h1 className="text-center">Dash and Dine</h1>
-          <p><a className="btn btn-primary btn-lg" role="button">Learn more</a></p>
-          <AutoComplete getLocation={getLocation} />
+        <div className="container">
+          <div className="jumbotron">
+            <h1 className="text-center">Dine and Dash</h1>
+            <p><a className="btn btn-primary btn-lg" role="button">Learn more</a></p>
+            <AutoComplete getMaps={getMaps} getLocation={getLocation} />
+          </div>
         </div>
-      </div>
+
     );
   }
 }
@@ -25,6 +26,9 @@ export default connect(state => ({
 dispatch => ({
   getLocation(lat, long){
     dispatch(getLocation(lat, long))
+  },
+  getMaps(obj) {
+    dispatch(getMaps(obj))
   }
 })
 )(Splash)
