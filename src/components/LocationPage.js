@@ -42,21 +42,21 @@ class  LocationPage extends Component {
 
     return (
       <div>
-      <Card style={cardStyle}>
-        <CardTitle className="text-center" title={name} subtitle={ full_address } />
-        <CardText>
-          <div className="col-xs-4">
-            <h3 style={cuisineHead}>{cuisine}</h3>
-            <WeatherDisplay main={main} weather_desc={weather_desc}/>
-          </div>
-          <div className="col-xs-8">
-            <Maps mapAdd={address} coord={coordinate} />
-          </div>
-        </CardText>
-      <CardActions>
-        <FlatButton label="Next Restaurant" secondary={true} onClick={this._changeRes} />
-      </CardActions>
-      </Card>
+        <Card style={cardStyle}>
+          <CardTitle className="text-center" title={name} subtitle={ full_address } />
+          <CardText>
+            <div className="col-xs-4">
+              <h3 style={cuisineHead}>{cuisine}</h3>
+              <WeatherDisplay main={main} weather_desc={weather_desc}/>
+            </div>
+            <div className="col-xs-8">
+              <Maps mapAdd={address} coord={coordinate} />
+            </div>
+          </CardText>
+          <CardActions>
+            <FlatButton label="Next Restaurant" secondary={true} onClick={this._changeRes} />
+          </CardActions>
+        </Card>
       </div>
     )
   }

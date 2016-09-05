@@ -37,10 +37,9 @@ class AutoComplete extends React.Component {
 			if (err) {
 				console.log('Oh no!', err)
 			}
-			// console.log(`Yay! got latitude and longitude for ${address}`, { lat, lng })
+
 			{ lat, lng }
 			let address = _autocomplete.getPlace().formatted_address;
-			// console.log(address);
 			let obj = {address, lat , lng};
 			this.props.getMaps(obj);
 			this.props.getLocation(lat, lng)
