@@ -2,21 +2,26 @@ const webpack = require('webpack');
 const path = require('path');
 
 module.exports = {
+  debug: true,
+  devtool: 'cheap-module-eval-source-map',
   entry: [
+    'webpack-hot-middleware/client?reload=true',
     'bootstrap-loader',
-    './src/index'
+    './src/index',
+    './src/styles/style.scss'
   ],
+  target: 'web',
   output: {
     path: path.join(__dirname, '/build'),
     publicPath: '/',
     filename: 'bundle.js'
   },
+  devServer: {
+    contentBase: './src'
+  },
   plugins: [
-    new webpack.optimize.UglifyJsPlugin({
-      compress:{
-        warnings: false
-      }
-    })
+    new webpack.HotModuleReplacementPlugin(),
+    new webpack.NoErrorsPlugin()
   ],
   module: {
     loaders: [
