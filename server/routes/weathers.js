@@ -5,7 +5,6 @@ const router = express.Router();
 
 const Weather = require('../models/weather');
 
-
 router.route('/:lat/:long')
   .get((req, res) => {
     Weather.weather(req.params.lat, req.params.long, (err, weather) => {
@@ -13,6 +12,5 @@ router.route('/:lat/:long')
       res.send(weather)
     });
   });
-
 
 module.exports = router;
