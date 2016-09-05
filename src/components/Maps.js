@@ -1,211 +1,246 @@
 import React from 'react';
 
+import {Gmaps, Marker, InfoWindow, Circle} from 'react-gmaps';
+
+const coords = {
+  lat: 51.5258541,
+  lng: -0.08040660000006028
+};
 
 class Maps extends React.Component {
-    constructor(props) {
-        super(props);
-        this.displayName = 'Maps';
+  constructor(props){
+    super(props)
+    console.log('Gmaps ', Gmaps)
+    this.onMapCreated = this.onMapCreated.bind(this);
+    this.onDragEnd = this.onDragEnd.bind(this);
+    this.onCloseClick = this.onCloseClick.bind(this);
+    this.onClick = this.onClick.bind()
+  }
+  onMapCreated(map) {
+    map.setOptions({
+      disableDefaultUI: true
+    });
+  }
 
-    }
-    componentDidMount() {
+  onDragEnd(e) {
+    console.log('onDragEnd', e);
+  }
 
-    	let geocoder = new google.maps.Geocoder();
-    	 let map = new google.maps.Map(document.getElementById('map'), {
-          center: {lat: 33.84138900000001, lng: 117.57744500000001},
-          zoom: 18,
-          mapMaker: true,
-          styles: [
-    {
-        "featureType": "administrative.province",
-        "elementType": "all",
-        "stylers": [
-            {
-                "visibility": "off"
-            }
-        ]
-    },
-    {
-        "featureType": "administrative.province",
-        "elementType": "geometry.fill",
-        "stylers": [
-            {
-                "color": "#ff0000"
-            }
-        ]
-    },
-    {
-        "featureType": "administrative.neighborhood",
-        "elementType": "labels.text.fill",
-        "stylers": [
-            {
-                "color": "#838383"
-            }
-        ]
-    },
-    {
-        "featureType": "landscape",
-        "elementType": "all",
-        "stylers": [
-            {
-                "saturation": -100
-            },
-            {
-                "lightness": 65
-            },
-            {
-                "visibility": "on"
-            }
-        ]
-    },
-    {
-        "featureType": "landscape",
-        "elementType": "geometry.fill",
-        "stylers": [
-            {
-                "lightness": "-7"
-            }
-        ]
-    },
-    {
-        "featureType": "poi",
-        "elementType": "all",
-        "stylers": [
-            {
-                "saturation": -100
-            },
-            {
-                "lightness": 51
-            },
-            {
-                "visibility": "simplified"
-            }
-        ]
-    },
-    {
-        "featureType": "poi.school",
-        "elementType": "labels.text",
-        "stylers": [
-            {
-                "visibility": "off"
-            }
-        ]
-    },
-    {
-        "featureType": "road.highway",
-        "elementType": "all",
-        "stylers": [
-            {
-                "saturation": -100
-            },
-            {
-                "visibility": "simplified"
-            }
-        ]
-    },
-    {
-        "featureType": "road.arterial",
-        "elementType": "all",
-        "stylers": [
-            {
-                "saturation": -100
-            },
-            {
-                "lightness": 30
-            },
-            {
-                "visibility": "on"
-            }
-        ]
-    },
-    {
-        "featureType": "road.local",
-        "elementType": "all",
-        "stylers": [
-            {
-                "saturation": -100
-            },
-            {
-                "lightness": 40
-            },
-            {
-                "visibility": "on"
-            }
-        ]
-    },
-    {
-        "featureType": "transit",
-        "elementType": "all",
-        "stylers": [
-            {
-                "saturation": -100
-            },
-            {
-                "visibility": "simplified"
-            }
-        ]
-    },
+  onCloseClick() {
+    console.log('onCloseClick');
+  }
+
+  onClick(e) {
+    console.log('onClick', e);
+  }
+
+  render() {
+    return (
+      <Gmaps
+        width={'600px'}
+        height={'400px'}
+        lat={coords.lat}
+        lng={coords.lng}
+        zoom={12}
+        styles={[
     {
         "featureType": "water",
         "elementType": "geometry",
         "stylers": [
             {
-                "hue": "#ffff00"
+                "color": "#e9e9e9"
             },
             {
-                "lightness": -25
-            },
-            {
-                "saturation": -97
+                "lightness": 17
             }
         ]
     },
     {
-        "featureType": "water",
+        "featureType": "landscape",
+        "elementType": "geometry",
+        "stylers": [
+            {
+                "color": "#f5f5f5"
+            },
+            {
+                "lightness": 20
+            }
+        ]
+    },
+    {
+        "featureType": "road.highway",
         "elementType": "geometry.fill",
         "stylers": [
             {
-                "color": "#575a5d"
+                "color": "#ffffff"
+            },
+            {
+                "lightness": 17
             }
         ]
     },
     {
-        "featureType": "water",
-        "elementType": "labels",
+        "featureType": "road.highway",
+        "elementType": "geometry.stroke",
+        "stylers": [
+            {
+                "color": "#ffffff"
+            },
+            {
+                "lightness": 29
+            },
+            {
+                "weight": 0.2
+            }
+        ]
+    },
+    {
+        "featureType": "road.arterial",
+        "elementType": "geometry",
+        "stylers": [
+            {
+                "color": "#ffffff"
+            },
+            {
+                "lightness": 18
+            }
+        ]
+    },
+    {
+        "featureType": "road.local",
+        "elementType": "geometry",
+        "stylers": [
+            {
+                "color": "#ffffff"
+            },
+            {
+                "lightness": 16
+            }
+        ]
+    },
+    {
+        "featureType": "poi",
+        "elementType": "geometry",
+        "stylers": [
+            {
+                "color": "#f5f5f5"
+            },
+            {
+                "lightness": 21
+            }
+        ]
+    },
+    {
+        "featureType": "poi.park",
+        "elementType": "geometry",
+        "stylers": [
+            {
+                "color": "#dedede"
+            },
+            {
+                "lightness": 21
+            }
+        ]
+    },
+    {
+        "elementType": "labels.text.stroke",
         "stylers": [
             {
                 "visibility": "on"
             },
             {
-                "lightness": -25
+                "color": "#ffffff"
             },
             {
-                "saturation": -100
+                "lightness": 16
+            }
+        ]
+    },
+    {
+        "elementType": "labels.text.fill",
+        "stylers": [
+            {
+                "saturation": 36
+            },
+            {
+                "color": "#333333"
+            },
+            {
+                "lightness": 40
+            }
+        ]
+    },
+    {
+        "elementType": "labels.icon",
+        "stylers": [
+            {
+                "visibility": "off"
+            }
+        ]
+    },
+    {
+        "featureType": "transit",
+        "elementType": "geometry",
+        "stylers": [
+            {
+                "color": "#f2f2f2"
+            },
+            {
+                "lightness": 19
+            }
+        ]
+    },
+    {
+        "featureType": "administrative",
+        "elementType": "geometry.fill",
+        "stylers": [
+            {
+                "color": "#fefefe"
+            },
+            {
+                "lightness": 20
+            }
+        ]
+    },
+    {
+        "featureType": "administrative",
+        "elementType": "geometry.stroke",
+        "stylers": [
+            {
+                "color": "#fefefe"
+            },
+            {
+                "lightness": 17
+            },
+            {
+                "weight": 1.2
             }
         ]
     }
-]
-        });
+]}
+        loadingMessage={'Be happy'}
+        params={{v: '3.exp', key: 'YOUR_API_KEY'}}
+        onMapCreated={this.onMapCreated}>
 
-    	  var address = '620 Huntley Dr, Corona, CA, United States';
-    		geocoder.geocode( { 'address': address}, function(results, status) {
-      	if (status == google.maps.GeocoderStatus.OK) {
-        	map.setCenter(results[0].geometry.location);
-        	var marker = new google.maps.Marker({
-            	map: map,
-            	position: results[0].geometry.location
-        	});
-      	} else {
-        	alert('Geocode was not successful for the following reason: ' + status);
-      	}
-    	});
-  	}
+        <Marker
+          lat={coords.lat}
+          lng={coords.lng}
+          draggable={true}
+          onDragEnd={this.onDragEnd} />
+        <InfoWindow
+          lat={coords.lat}
+          lng={coords.lng}
+          content={'Hello, React :)'}
+          onCloseClick={this.onCloseClick} />
+        <Circle
+          lat={coords.lat}
+          lng={coords.lng}
+          radius={500}
+          onClick={this.onClick} />
+      </Gmaps>
+    );
+  }
 
-    render() {
-        return (
-        <div style={{ height: '75%'}} id='map'>
-        </div>
-      )
-    }
 }
 
-export default Maps;
+export default Maps

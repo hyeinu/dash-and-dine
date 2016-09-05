@@ -7,6 +7,11 @@ export function receiveLocation(){
     type:'GET_STATE'
   }
 }
+export function changeRes(){
+  return {
+    type:'SWITCH_RESTAURANT'
+  }
+}
 
 export function getLocation(lat, long){
   randomNum = Math.floor(Math.random() * 20)

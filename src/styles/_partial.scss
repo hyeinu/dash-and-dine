@@ -1,14 +1,12 @@
 $header: indianred;
 
 h1{
-  color: $header;
-  font-size: 105px;
-  // font-family: 'Alex Brush', cursive;
-  // font-family: 'Dancing Script', cursive;
-  // font-family: 'Roboto Condensed', sans-serif;
-  // font-family: 'Cinzel', serif;
-  font-family: 'Lora', serif;
+  font-family: 'Dancing Script', cursive;
   font-style: italic;
+}
+
+.test {
+  font-size: 15vh !important;
 }
 
 .wrap {
@@ -31,6 +29,6 @@ h1{
     font-size: 95px;
 }
 
-img {
+.image {
   border-radius: 50%;
 }

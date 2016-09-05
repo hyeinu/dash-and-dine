@@ -11,6 +11,15 @@ var componentForm = {
 	country: 'long_name',
 	postal_code: 'short_name'
 };
+
+const inputStyle = {
+	width: '500px',
+	'font-size': '30px'
+}
+const btnStyle = {
+	'font-size': '40px'
+}
+
 let _autocomplete = null
 class AutoComplete extends React.Component {
 	constructor(props) {
@@ -56,11 +65,12 @@ class AutoComplete extends React.Component {
 						floatingLabelText="Enter a location"
 						floatingLabelFixed={false}
 						placeholder=''
+						style={inputStyle}
 						value={this.state.address}
 						id="autocomplete"
 						type="text"
 						size="50" />
-					<FlatButton type="submit" label="Enter" primary={true} />
+					<FlatButton style={btnStyle} type="submit" label="Enter" primary={true} />
 				</form>
    		</div>
     )
