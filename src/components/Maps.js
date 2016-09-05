@@ -2,10 +2,6 @@ import React from 'react';
 
 import {Gmaps, Marker, InfoWindow, Circle} from 'react-gmaps';
 
-const coords = {
-  lat: 51.5258541,
-  lng: -0.08040660000006028
-};
 
 class Maps extends React.Component {
   constructor(props){
@@ -35,23 +31,23 @@ class Maps extends React.Component {
   }
 
   render() {
+
+    let {latitude, longitude} = this.props.coord
+
     return (
       <Gmaps
-        width={'600px'}
+        width={'575px'}
         height={'400px'}
-        lat={coords.lat}
-        lng={coords.lng}
-        zoom={12}
+        lat={latitude}
+        lng={longitude}
+        zoom={15}
         styles={[
     {
         "featureType": "water",
         "elementType": "geometry",
         "stylers": [
             {
-                "color": "#e9e9e9"
-            },
-            {
-                "lightness": 17
+                "color": "#193341"
             }
         ]
     },
@@ -60,61 +56,19 @@ class Maps extends React.Component {
         "elementType": "geometry",
         "stylers": [
             {
-                "color": "#f5f5f5"
-            },
-            {
-                "lightness": 20
+                "color": "#2c5a71"
             }
         ]
     },
     {
-        "featureType": "road.highway",
-        "elementType": "geometry.fill",
-        "stylers": [
-            {
-                "color": "#ffffff"
-            },
-            {
-                "lightness": 17
-            }
-        ]
-    },
-    {
-        "featureType": "road.highway",
-        "elementType": "geometry.stroke",
-        "stylers": [
-            {
-                "color": "#ffffff"
-            },
-            {
-                "lightness": 29
-            },
-            {
-                "weight": 0.2
-            }
-        ]
-    },
-    {
-        "featureType": "road.arterial",
+        "featureType": "road",
         "elementType": "geometry",
         "stylers": [
             {
-                "color": "#ffffff"
+                "color": "#29768a"
             },
             {
-                "lightness": 18
-            }
-        ]
-    },
-    {
-        "featureType": "road.local",
-        "elementType": "geometry",
-        "stylers": [
-            {
-                "color": "#ffffff"
-            },
-            {
-                "lightness": 16
+                "lightness": -37
             }
         ]
     },
@@ -123,22 +77,16 @@ class Maps extends React.Component {
         "elementType": "geometry",
         "stylers": [
             {
-                "color": "#f5f5f5"
-            },
-            {
-                "lightness": 21
+                "color": "#406d80"
             }
         ]
     },
     {
-        "featureType": "poi.park",
+        "featureType": "transit",
         "elementType": "geometry",
         "stylers": [
             {
-                "color": "#dedede"
-            },
-            {
-                "lightness": 21
+                "color": "#406d80"
             }
         ]
     },
@@ -149,10 +97,13 @@ class Maps extends React.Component {
                 "visibility": "on"
             },
             {
-                "color": "#ffffff"
+                "color": "#3e606f"
             },
             {
-                "lightness": 16
+                "weight": 2
+            },
+            {
+                "gamma": 0.84
             }
         ]
     },
@@ -160,13 +111,19 @@ class Maps extends React.Component {
         "elementType": "labels.text.fill",
         "stylers": [
             {
-                "saturation": 36
+                "color": "#ffffff"
+            }
+        ]
+    },
+    {
+        "featureType": "administrative",
+        "elementType": "geometry",
+        "stylers": [
+            {
+                "weight": 0.6
             },
             {
-                "color": "#333333"
-            },
-            {
-                "lightness": 40
+                "color": "#1a3541"
             }
         ]
     },
@@ -179,41 +136,11 @@ class Maps extends React.Component {
         ]
     },
     {
-        "featureType": "transit",
+        "featureType": "poi.park",
         "elementType": "geometry",
         "stylers": [
             {
-                "color": "#f2f2f2"
-            },
-            {
-                "lightness": 19
-            }
-        ]
-    },
-    {
-        "featureType": "administrative",
-        "elementType": "geometry.fill",
-        "stylers": [
-            {
-                "color": "#fefefe"
-            },
-            {
-                "lightness": 20
-            }
-        ]
-    },
-    {
-        "featureType": "administrative",
-        "elementType": "geometry.stroke",
-        "stylers": [
-            {
-                "color": "#fefefe"
-            },
-            {
-                "lightness": 17
-            },
-            {
-                "weight": 1.2
+                "color": "#2c5a71"
             }
         ]
     }
@@ -223,19 +150,19 @@ class Maps extends React.Component {
         onMapCreated={this.onMapCreated}>
 
         <Marker
-          lat={coords.lat}
-          lng={coords.lng}
+          lat={latitude}
+          lng={longitude}
           draggable={true}
           onDragEnd={this.onDragEnd} />
         <InfoWindow
-          lat={coords.lat}
-          lng={coords.lng}
-          content={'Hello, React :)'}
+          lat={latitude}
+          lng={longitude}
+          content={this.props.mapAdd[0]}
           onCloseClick={this.onCloseClick} />
         <Circle
-          lat={coords.lat}
-          lng={coords.lng}
-          radius={500}
+          lat={latitude}
+          lng={longitude}
+          radius={50}
           onClick={this.onClick} />
       </Gmaps>
     );

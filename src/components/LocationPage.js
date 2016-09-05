@@ -34,13 +34,11 @@ class  LocationPage extends Component {
       return (<h1>Loading...</h1>)
     }
     let { name, display_phone, url, location, snippet_text, categories } = this.props.res
-    let { address, city, state_code, postal_code } = location
+    let { address, city, state_code, postal_code, coordinate } = location
     let full_address = address + " " + city + ", " + state_code + " " + postal_code + "  ||   " + display_phone
     let { main, weather } = this.props.weather.state
     let weather_desc = weather[0].main
     let cuisine = categories[0][0];
-    let { coordinate } = this.props.loc
-    let mapAddress = this.props.loc.address
 
     return (
       <div>
@@ -52,7 +50,7 @@ class  LocationPage extends Component {
             <WeatherDisplay main={main} weather_desc={weather_desc}/>
           </div>
           <div className="col-xs-8">
-            <Maps mapAdd={mapAddress} coord={coordinate} />
+            <Maps mapAdd={address} coord={coordinate} />
           </div>
         </CardText>
       <CardActions>
@@ -66,8 +64,7 @@ class  LocationPage extends Component {
 
 export default connect(state =>({
   res: state.restaurant.choice,
-  weather: state.weather,
-  loc: state.location.address
+  weather: state.weather
 }),
 dispatch => {
   return {

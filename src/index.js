@@ -9,7 +9,6 @@ import { MuiThemeProvider } from 'material-ui';
 import Layout from './components/Layout';
 import Splash from './components/Splash';
 import LocationPage from './components/LocationPage';
-import LocationList from './components/LocationList'
 
 import store from './store'
 

@@ -14,10 +14,10 @@ var componentForm = {
 
 const inputStyle = {
 	width: '500px',
-	'font-size': '30px'
+	'fontSize': '30px'
 }
 const btnStyle = {
-	'font-size': '40px'
+	'fontSize': '40px'
 }
 
 let _autocomplete = null
