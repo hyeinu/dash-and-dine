@@ -11,7 +11,7 @@ render(){
   let addressRender = (
     <p>{city}</p>
     )
-  
+
   return (
    <div>
      {addressRender}

@@ -10,3 +10,27 @@ h1{
   font-family: 'Lora', serif;
   font-style: italic;
 }
+
+.wrap {
+    width: 150px;
+    height: 150px;
+    margin: 20px;
+    text-align: center;
+    position: relative;
+    float: left;
+}
+.text-image {
+    position: absolute;
+    margin: auto;
+    top: 40%;
+    left: 40%;
+    right: 50;
+    bottom: 50;
+    color:white;
+    height:100px;
+    font-size: 95px;
+}
+
+img {
+  border-radius: 50%;
+}
