@@ -2,15 +2,19 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import AutoComplete from './AutoComplete';
 import { getLocation, getMaps} from '../actions/LocationActions'
+import CurrentLocation from './CurrentLocation';
+
 
 class Splash extends Component {
   render() {
     let { getLocation, getMaps } = this.props
     return (
         <div className="container">
-          <div className="jumbotron">
+          <div className="jumbotron text-center">
             <h1 className="test text-center">Dine and Dash</h1>
             <AutoComplete getMaps={getMaps} getLocation={getLocation} />
+
+            <CurrentLocation className="center-block" getMaps={getMaps} getLocation={getLocation} />
           </div>
         </div>
     );
